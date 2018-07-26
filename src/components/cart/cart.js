@@ -52,6 +52,7 @@ export default class Cart extends React.Component {
                     type="number"
                     defaultValue="1"
                     name="quantity"
+                    min="1"
                     data-id={item.product._id}
                     onChange={this.props.changeQuantity}
                   />
