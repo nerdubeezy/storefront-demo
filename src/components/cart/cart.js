@@ -1,12 +1,16 @@
 import React from "react";
 
+import './cart.css';
+
+import * as utils from '../../lib/utils.js';
+
 export default class Cart extends React.Component {
+  
   constructor(props) {
     super(props);
-
-    this.cartTotal = this.cartTotal.bind(this);
   }
-  cartTotal() {
+
+  cartTotal = () => {
     let cart = this.props.cart;
     let total = 0;
     let quantity = 0;
@@ -14,16 +18,21 @@ export default class Cart extends React.Component {
       quantity += parseFloat(item.quantity);
       total += parseFloat(item.product.price) * item.quantity;
     });
-    return { total, quantity };
+    return {total, quantity};
   }
+
+  handleCheckout = () => { 
+    alert(`This is when we charge your card $${this.cartTotal().total} for the purchase of ${this.cartTotal().quantity} item(s).`);
+  }
+
   render() {
-    let { total, quantity } = this.cartTotal();
     return (
       <div id="cart">
         <header className="cart-header">
-          <p>Cart</p>
-          <i class="fas fa-shopping-cart" />
-          <div id="quantity">{quantity}</div>
+          <div>
+            <i class="fas fa-shopping-cart" />
+            <div id="quantity">{this.cartTotal().quantity}</div>
+          </div>
         </header>
         <ul>
           {this.props.cart &&
@@ -56,11 +65,16 @@ export default class Cart extends React.Component {
                 </div>
               </li>
             ))}
+            </ul>
           <footer className="cart-footer">
-            <div className="cart-total">total: ${total}</div>
-            <button className="cart-checkout">Checkout</button>
+            <div className="cart-total">Total: $ {this.cartTotal().total}</div>
+           {
+             utils.renderIf(
+               this.cartTotal().total !== 0,
+               <button className="cart-checkout" onClick={this.handleCheckout}>Checkout</button>
+             )
+           }
           </footer>
-        </ul>
       </div>
     );
   }
