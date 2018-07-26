@@ -1,0 +1,76 @@
+.site-nav {
+  background: url(https://uploads.codesandbox.io/uploads/user/0e04c500-acae-46eb-94c9-487a92ae8cfa/1gIB-box-dog-header.jpg);
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: -100px;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+  padding: 1em;
+  width: 100%;
+  z-index: 1;
+}
+.site-nav ul {
+  color: rgb(10, 10, 10);
+  list-style-type: none;
+  padding: 0;
+  position: relative;
+  width: 25%;
+  z-index: 2;
+}
+.site-nav ul li {
+  cursor: pointer;
+  font-family: "PT Sans", sans-serif;
+  font-size: 1.2em;
+  padding: 0.5em;
+  position: relative;
+  margin: 0.25em 0 0.25em 2em;
+  transition: all 0.4s;
+  vertical-align: middle;
+  z-index: 5;
+}
+.site-nav ul li:hover {
+  color: #fcfcfc;
+}
+.site-nav ul li:hover::after {
+  opacity: 1;
+  transform: rotate(0deg);
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.site-nav ul li::after {
+  background: rgba(10, 10, 10, 0.8);
+  content: "";
+  opacity: 0;
+  position: absolute;
+  top: -50px;
+  left: 0;
+  height: 100%;
+  transition: all 0.4s;
+  width: 0;
+  z-index: -1;
+
+  transform: rotate(-3deg);
+}
+.site-nav .site-logo {
+  margin-left: 1em;
+  /* color: white; */
+}
+.site-nav .site-logo:after {
+  display: none;
+}
+.site-nav .site-logo i {
+  font-size: 3em;
+  margin-bottom: 0.25em;
+}
+.site-nav .site-logo p {
+  font-family: "Pacifico", cursive;
+  font-size: 1.5em;
+  margin: 0;
+  position: relative;
+  top: -30px;
+  transform: rotate(-4deg);
+}

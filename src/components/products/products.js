@@ -1,4 +1,5 @@
 import React from "react";
+import './products.css';
 
 export default class Products extends React.Component {
   constructor(props) {
@@ -6,6 +7,7 @@ export default class Products extends React.Component {
   }
   render() {
     return (
+      <React.Fragment>
       <div id="listings">
         <ul>
           {this.props.products &&
@@ -26,6 +28,8 @@ export default class Products extends React.Component {
             ))}
         </ul>
       </div>
+      <hr />
+      </React.Fragment>
     );
   }
 }

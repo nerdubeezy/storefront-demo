@@ -1,6 +1,7 @@
 import "./store.css";
 
-import React from "react";
+import React from 'react';
+import * as Spinners from 'react-spinners'
 
 import * as api from "../../lib/api.js";
 import * as utils from "../../lib/utils.js";
@@ -14,7 +15,8 @@ export default class Store extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cart: []
+      cart: [],
+      loading: false,
     };
 
     this.getProducts = this.getProducts.bind(this);
@@ -30,18 +32,20 @@ export default class Store extends React.Component {
   }
 
   async componentWillMount() {
+    this.setState({loading: true});
     let payload = { model: "categories" };
     let categories = await api.get(payload);
 
-    this.setState({ categories });
+    this.setState({ categories, loading: false});
   }
 
   async getProducts(e) {
+    this.setState({ loading: true });
     let payload = { model: "categories", id: e.target.dataset.id };
     let category = await api.get(payload);
     let products = category.products;
     console.log({ products });
-    this.setState({ products });
+    this.setState({ products, loading: false });
   }
 
   addToCart(e) {
@@ -97,18 +101,28 @@ export default class Store extends React.Component {
 
   render() {
     let products = this.state.products || [];
-
     return (
       <React.Fragment>
         <Nav />
         <section id="store">
+        {
+          utils.renderIf(
+            this.state.loading,
+            <div className='sweet-loading'>
+              <Spinners.BarLoader className="spinner" size={160} color={'#0a0a0a'} />
+            </div>
+          )
+        }
           <Categories
             categories={this.state.categories}
             getProducts={this.getProducts}
           />
-          <hr />
-          <Products products={products} addtocart={this.addToCart} />
-          <hr />
+          {
+            utils.renderIf(
+              products && products.length, 
+              <Products products={products} addtocart={this.addToCart} />
+            )
+          }
           <Cart
             cart={this.state.cart}
             changeQuantity={this.quatityOnCart}
