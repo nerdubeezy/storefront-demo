@@ -1,6 +1,9 @@
 Storefront DEMO
 =================
 
+**Deployed Front End:** [https://storefront-frontend-demo.herokuapp.com/](https://storefront-frontend-demo.herokuapp.com/)
+**Back End Repo:** [https://github.com/justeban/Storefront-API](https://github.com/justeban/Storefront-API)
+
 # Overview
 This Storefront Demo was built uitilizing React and CSS on the front end and showcases a fully functioning shopping cart.
 
