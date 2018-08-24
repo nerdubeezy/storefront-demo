@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import './cart.css';
 
@@ -21,9 +21,9 @@ export default class Cart extends React.Component {
     return {total, quantity};
   }
 
-  handleCheckout = () => { 
+  handleCheckout = e => { 
     // alert(`This is when we charge your card $${this.cartTotal().total} for the purchase of ${this.cartTotal().quantity} item(s).`);
-    this.props.toggleCartModal();
+    this.props.toggleCartModal(e);
   }
 
   render() {
@@ -67,16 +67,16 @@ export default class Cart extends React.Component {
                 </div>
               </li>
             ))}
-            </ul>
-          <footer className="cart-footer">
-            <div className="cart-total">Total: $ {this.cartTotal().total}</div>
-           {
-             utils.renderIf(
-               this.cartTotal().total !== 0,
-               <button className="cart-checkout" onClick={this.handleCheckout}>Checkout</button>
-             )
-           }
-          </footer>
+        </ul>
+        <footer className="cart-footer">
+          <div className="cart-total">Total: $ {this.cartTotal().total}</div>
+          {
+            utils.renderIf(
+              this.cartTotal().total !== 0,
+              <button className="cart-checkout" onClick={this.handleCheckout}>Checkout</button>
+            )
+          }
+        </footer>
       </div>
     );
   }
