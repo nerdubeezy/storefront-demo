@@ -28,10 +28,10 @@ export default class Store extends React.Component {
     // this.cartTotal = this.cartTotal.bind(this);
   }
 
-  componentDidUpdate() {
-    console.log('__STATE__', this.state);
-    console.log('__CART__', this.state.cart);
-  }
+  // componentDidUpdate() {
+  //   console.log('__STATE__', this.state);
+  //   console.log('__CART__', this.state.cart);
+  // }
 
   async componentWillMount() {
     this.setState({loading: true});
@@ -46,7 +46,6 @@ export default class Store extends React.Component {
     let payload = { model: 'categories', id: e.target.dataset.id };
     let category = await api.get(payload);
     let products = category.products;
-    console.log({ products });
     this.setState({ products, loading: false });
   }
 
