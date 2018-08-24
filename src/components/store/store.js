@@ -6,10 +6,11 @@ import * as Spinners from 'react-spinners'
 import * as api from "../../lib/api.js";
 import * as utils from "../../lib/utils.js";
 
-import Nav from "../nav/nav.js";
-import Categories from "../categories/categories.js";
-import Products from "../products/products.js";
 import Cart from "../cart/cart.js";
+import Categories from "../categories/categories.js";
+import Modal from '../modal/modal.js';
+import Nav from "../nav/nav.js";
+import Products from "../products/products.js";
 
 export default class Store extends React.Component {
   constructor(props) {
@@ -103,6 +104,7 @@ export default class Store extends React.Component {
     let products = this.state.products || [];
     return (
       <React.Fragment>
+        <Modal />
         <Nav />
         <section id="store">
         {
