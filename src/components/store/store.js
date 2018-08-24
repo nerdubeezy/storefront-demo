@@ -18,6 +18,7 @@ export default class Store extends React.Component {
     this.state = {
       cart: [],
       loading: false,
+      showCartModal: false,
     };
 
     this.getProducts = this.getProducts.bind(this);
@@ -100,11 +101,17 @@ export default class Store extends React.Component {
     this.setState({ cart: [...cart] });
   }
 
+  toggleCartModal = () => {
+    this.state.showCartModal ? this.setState({ showCartModal: false }) : this.setState({ showCartModal: true })
+  }
+
   render() {
     let products = this.state.products || [];
     return (
       <React.Fragment>
-        <Modal />
+        {
+          this.state.showCartModal ? <Modal content={this.state.cart} toggleCartModal={this.toggleCartModal} /> : null
+        }
         <Nav />
         <section id="store">
         {
@@ -129,6 +136,7 @@ export default class Store extends React.Component {
             cart={this.state.cart}
             changeQuantity={this.quatityOnCart}
             removeItem={this.removeFromCart}
+            toggleCartModal={this.toggleCartModal}
           />
         </section>
       </React.Fragment>

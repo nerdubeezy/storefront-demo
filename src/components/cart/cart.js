@@ -22,7 +22,8 @@ export default class Cart extends React.Component {
   }
 
   handleCheckout = () => { 
-    alert(`This is when we charge your card $${this.cartTotal().total} for the purchase of ${this.cartTotal().quantity} item(s).`);
+    // alert(`This is when we charge your card $${this.cartTotal().total} for the purchase of ${this.cartTotal().quantity} item(s).`);
+    this.props.toggleCartModal();
   }
 
   render() {
@@ -30,7 +31,7 @@ export default class Cart extends React.Component {
       <div id="cart">
         <header className="cart-header">
           <div>
-            <i class="fas fa-shopping-cart" />
+            <i className="fas fa-shopping-cart" />
             <div id="quantity">{this.cartTotal().quantity}</div>
           </div>
         </header>
@@ -47,7 +48,7 @@ export default class Cart extends React.Component {
                   <p>x</p>
                 </div>
                 <div className="quantity">
-                  <label for="quantity">Quantity</label>
+                  <label htmlFor="quantity">Quantity</label>
                   <input
                     type="number"
                     defaultValue="1"
@@ -62,7 +63,7 @@ export default class Cart extends React.Component {
                   data-id={item.product._id}
                   onClick={this.props.removeItem}
                 >
-                  <i class="fas fa-times-circle" data-id={item.product._id} />
+                  <i className="fas fa-times-circle" data-id={item.product._id} />
                 </div>
               </li>
             ))}
