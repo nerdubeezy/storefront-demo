@@ -91,47 +91,46 @@ export default class Modal extends React.Component {
           }
           {
             Object.keys(this.state.content).length ?
-              <table>
-                <thead>
-                  <tr>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th>Sub</th> 
-                    <th>Tax</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    Object.keys(this.state.content).map((key, i) =>
-                      <tr key={i}>
-                        <td>{key}</td>
-                        <td>{this.state.content[key].quantity}</td>
-                        <td>{this.state.content[key].price}</td>
-                        <td>{this.state.content[key].sub}</td>
-                        <td>{this.state.content[key].itemTax}</td>
-                      </tr>
-                    )
-                  }
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Sub Total</td>
-                    <td>Tax Total</td>
-                    <td>Total</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>{this.state.subTotal}</td>
-                    <td>{this.state.totalTax}</td>
-                    <td>{this.state.grandTotal}</td>
-                  </tr>
-                </tbody>
-                <tfoot></tfoot>
-              </table>
+              <React.Fragment>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Product</th>
+                      <th>Quantity</th>
+                      <th>Price</th>
+                      <th>Sub</th> 
+                      <th>Tax</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {
+                      Object.keys(this.state.content).map((key, i) =>
+                        <tr key={i}>
+                          <td>{key}</td>
+                          <td>{this.state.content[key].quantity}</td>
+                          <td>{this.state.content[key].price}</td>
+                          <td>{this.state.content[key].sub}</td>
+                          <td>{this.state.content[key].itemTax}</td>
+                        </tr>
+                      )
+                    }
+                  </tbody>
+                </table>
+                <footer>
+                  <div>
+                    <header>Sub Total</header>
+                    <p>{this.state.subTotal}</p>
+                  </div>
+                  <div>
+                    <header>Tax Total</header>
+                    <p>{this.state.totalTax}</p>
+                  </div>
+                  <div>
+                    <header>Total</header>
+                    <p>{this.state.grandTotal}</p>
+                  </div>
+                </footer>
+              </React.Fragment>
               : null
           }
         </div>
