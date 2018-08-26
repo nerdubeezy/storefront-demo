@@ -11,6 +11,7 @@ section.modal-wrapper {
   width: 100%;
   z-index: 300;
 }
+
 section.modal-wrapper > .modal-container {
   background: #fcfcfc;
   border-radius: 3px;
@@ -25,17 +26,24 @@ section.modal-wrapper > .modal-container {
   overflow-y: scroll;
   padding: 1em;
   width: 40%;
-} 
+}
+
 section.modal-wrapper > .modal-container p {
   margin: auto;
 }
+
 section.modal-wrapper > .modal-container table {
   border-collapse: collapse;
   table-layout: fixed;
   text-align: center;
   width: 100%;
 }
+
 section.modal-wrapper > .modal-container table thead {
+  border-bottom: solid 1px rgba(0,0,0,0.5);
+}
+
+section.modal-wrapper > .modal-container table tr {
   border-bottom: solid 1px rgba(0,0,0,0.5);
 }
 
