@@ -1,7 +1,8 @@
 section.modal-wrapper {
-  background: rgba(252,252,252,0.5);
+  background: rgba(252,252,252,0.8);
   bottom: 0;
   display: flex;
+  flex-direction: column;
   font-family: "PT Sans", sans-serif;
   height: 100%;
   left: 0;
@@ -27,6 +28,16 @@ section.modal-wrapper > .modal-container {
   padding: 1em;
   width: 40%;
 }
+
+section.modal-wrapper > .ava-logo {
+  margin: auto;
+}
+
+section.modal-wrapper > .ava-logo img {
+  width: 150px;
+  border: solid 1px #fc6600;
+}
+
 section.modal-wrapper > .modal-container .form-title {
   margin: 0;
 }
@@ -47,6 +58,7 @@ section.modal-wrapper > .modal-container form > label > input {
   border-radius: 3px;
   padding: .5em;
 }
+
 section.modal-wrapper > .modal-container form > input {
   background: rgb(10, 10, 10);
   border-radius: 3px;

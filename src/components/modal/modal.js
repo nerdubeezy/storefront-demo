@@ -4,6 +4,7 @@ import React from 'react';
 import uuid from 'uuid/v4';
 
 import Form from '../form/form.js';
+import avaLogo from '../../assets/avatax-logo1.png';
 
 import {post} from '../../lib/avatax.api.js';
 
@@ -137,7 +138,7 @@ export default class Modal extends React.Component {
         {
           Object.keys(this.state.content).length ? 
             <div className="ava-logo">
-              <img src="../../avatax-logo1.png"/>
+              <img src={avaLogo}/>
             </div>
             : null
         }
