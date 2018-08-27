@@ -1,0 +1,102 @@
+section.modal-wrapper {
+  background: rgba(252,252,252,0.8);
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: "PT Sans", sans-serif;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 300;
+}
+
+section.modal-wrapper > .modal-container {
+  background: #fcfcfc;
+  border-radius: 3px;
+  box-shadow: 0px 0px 18px -5px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0px 0px 18px -5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  font-size: .8em;
+  min-height: 150px;
+  max-height: 60%;
+  margin: auto;
+  overflow-y: scroll;
+  padding: 1em;
+  width: 40%;
+}
+
+section.modal-wrapper > .ava-logo {
+  margin: auto;
+}
+
+section.modal-wrapper > .ava-logo img {
+  width: 150px;
+  border: solid 1px #fc6600;
+}
+
+section.modal-wrapper > .modal-container .form-title {
+  margin: 0;
+}
+section.modal-wrapper > .modal-container form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+section.modal-wrapper > .modal-container form > label {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin: .5em 1em;
+}
+
+section.modal-wrapper > .modal-container form > label > input {
+  border: solid 1px rgba(10, 10, 10, 0.8);
+  border-radius: 3px;
+  padding: .5em;
+}
+
+section.modal-wrapper > .modal-container form > input {
+  background: rgb(10, 10, 10);
+  border-radius: 3px;
+  color: #fcfcfc;
+  cursor: pointer;
+  margin: 1em auto;
+  width: 80%;
+}
+
+section.modal-wrapper > .modal-container p {
+  margin: auto;
+}
+
+section.modal-wrapper > .modal-container table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  text-align: center;
+  width: 100%;
+}
+
+section.modal-wrapper > .modal-container table thead {
+  border-bottom: solid 1px rgba(0,0,0,0.5);
+}
+
+section.modal-wrapper > .modal-container table tr {
+  border-bottom: solid 1px rgba(0,0,0,0.5);
+}
+
+section.modal-wrapper > .modal-container table td {
+  padding: .5em 0;
+}
+
+section.modal-wrapper > .modal-container footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+section.modal-wrapper > .modal-container footer > div {
+  margin: 1em 1em 0;
+  text-align: center;
+}

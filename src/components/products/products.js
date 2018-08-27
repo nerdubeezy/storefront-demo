@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import './products.css';
 
 export default class Products extends React.Component {
@@ -8,9 +8,9 @@ export default class Products extends React.Component {
   render() {
     return (
       <React.Fragment>
-      <div id="listings">
-        <ul>
-          {this.props.products &&
+        <div id="listings">
+          <ul>
+            {this.props.products &&
             this.props.products.map((product, i) => (
               <li key={product._id}>
                 <div className="single-product">
@@ -26,9 +26,9 @@ export default class Products extends React.Component {
                 </div>
               </li>
             ))}
-        </ul>
-      </div>
-      <hr />
+          </ul>
+        </div>
+        <hr />
       </React.Fragment>
     );
   }

@@ -1,15 +1,16 @@
-import "./store.css";
+import './store.css';
 
 import React from 'react';
-import * as Spinners from 'react-spinners'
+import * as Spinners from 'react-spinners';
 
-import * as api from "../../lib/api.js";
-import * as utils from "../../lib/utils.js";
+import * as api from '../../lib/api.js';
+import * as utils from '../../lib/utils.js';
 
-import Nav from "../nav/nav.js";
-import Categories from "../categories/categories.js";
-import Products from "../products/products.js";
-import Cart from "../cart/cart.js";
+import Cart from '../cart/cart.js';
+import Categories from '../categories/categories.js';
+import Modal from '../modal/modal.js';
+import Nav from '../nav/nav.js';
+import Products from '../products/products.js';
 
 export default class Store extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ export default class Store extends React.Component {
     this.state = {
       cart: [],
       loading: false,
+      showCartModal: false,
     };
 
     this.getProducts = this.getProducts.bind(this);
@@ -26,14 +28,14 @@ export default class Store extends React.Component {
     // this.cartTotal = this.cartTotal.bind(this);
   }
 
-  componentDidUpdate() {
-    console.log("__STATE__", this.state);
-    console.log("__CART__", this.state.cart);
-  }
+  // componentDidUpdate() {
+  //   console.log('__STATE__', this.state);
+  //   console.log('__CART__', this.state.cart);
+  // }
 
   async componentWillMount() {
     this.setState({loading: true});
-    let payload = { model: "categories" };
+    let payload = { model: 'categories' };
     let categories = await api.get(payload);
 
     this.setState({ categories, loading: false});
@@ -41,10 +43,9 @@ export default class Store extends React.Component {
 
   async getProducts(e) {
     this.setState({ loading: true });
-    let payload = { model: "categories", id: e.target.dataset.id };
+    let payload = { model: 'categories', id: e.target.dataset.id };
     let category = await api.get(payload);
     let products = category.products;
-    console.log({ products });
     this.setState({ products, loading: false });
   }
 
@@ -70,10 +71,10 @@ export default class Store extends React.Component {
 
     if (add) {
       this.setState({
-        cart: [...this.state.cart, { product: product, quantity: 1 }]
+        cart: [...this.state.cart, { product: product, quantity: 1 }],
       });
     } else {
-      alert("This product is already in your cart");
+      alert('This product is already in your cart');
     }
     add = true;
   }
@@ -99,20 +100,30 @@ export default class Store extends React.Component {
     this.setState({ cart: [...cart] });
   }
 
+  toggleCartModal = e => {
+    let targetEl = e.target.tagName;
+    targetEl === 'SECTION' || targetEl === 'BUTTON'
+      ? this.state.showCartModal ? this.setState({ showCartModal: false }) : this.setState({ showCartModal: true })
+      : null;
+  }
+
   render() {
     let products = this.state.products || [];
     return (
       <React.Fragment>
+        {
+          this.state.showCartModal ? <Modal content={this.state.cart} toggleCartModal={this.toggleCartModal} /> : null
+        }
         <Nav />
         <section id="store">
-        {
-          utils.renderIf(
-            this.state.loading,
-            <div className='sweet-loading'>
-              <Spinners.BarLoader className="spinner" size={160} color={'#0a0a0a'} />
-            </div>
-          )
-        }
+          {
+            utils.renderIf(
+              this.state.loading,
+              <div className='sweet-loading'>
+                <Spinners.BarLoader className="spinner" size={160} color={'#0a0a0a'} />
+              </div>
+            )
+          }
           <Categories
             categories={this.state.categories}
             getProducts={this.getProducts}
@@ -127,6 +138,7 @@ export default class Store extends React.Component {
             cart={this.state.cart}
             changeQuantity={this.quatityOnCart}
             removeItem={this.removeFromCart}
+            toggleCartModal={this.toggleCartModal}
           />
         </section>
       </React.Fragment>
