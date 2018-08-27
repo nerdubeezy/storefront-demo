@@ -137,7 +137,7 @@ export default class Modal extends React.Component {
         {
           Object.keys(this.state.content).length ? 
             <div className="ava-logo">
-              <img src="../../../assets/avatax-logo1.png"/>
+              <img src="../../avatax-logo1.png"/>
             </div>
             : null
         }
