@@ -33,7 +33,7 @@ export default class Modal extends React.Component {
       let product = {};
       product.number = i + 1;
       product.quantity = parseInt(item.quantity);
-      product.amount = parseInt(item.quantity * item.product.price);
+      product.amount = parseFloat(item.quantity * item.product.price);
       return product;
     });
 
