@@ -91,7 +91,7 @@ export default class Store extends React.Component {
 
     let cart = [...this.state.cart];
 
-    cart.map(product => {
+    cart.forEach(product => {
       if (product.product._id === productId) {
         product.quantity = quantity;
       }

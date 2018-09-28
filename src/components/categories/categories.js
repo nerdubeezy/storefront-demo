@@ -1,16 +1,13 @@
-import React from "react";
+import React from 'react';
 import './categories.css';
 
 export default class Categories extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     let photos = [
-      "https://uploads.codesandbox.io/uploads/user/0e04c500-acae-46eb-94c9-487a92ae8cfa/BvJp-clothing.jpg",
-      "https://uploads.codesandbox.io/uploads/user/0e04c500-acae-46eb-94c9-487a92ae8cfa/nxjB-electronics.jpg",
-      "https://uploads.codesandbox.io/uploads/user/0e04c500-acae-46eb-94c9-487a92ae8cfa/UMTK-pharmacy.jpg",
-      "https://uploads.codesandbox.io/uploads/user/0e04c500-acae-46eb-94c9-487a92ae8cfa/MVaw-accessory.jpg"
+      'https://uploads.codesandbox.io/uploads/user/0e04c500-acae-46eb-94c9-487a92ae8cfa/BvJp-clothing.jpg',
+      'https://uploads.codesandbox.io/uploads/user/0e04c500-acae-46eb-94c9-487a92ae8cfa/nxjB-electronics.jpg',
+      'https://uploads.codesandbox.io/uploads/user/0e04c500-acae-46eb-94c9-487a92ae8cfa/UMTK-pharmacy.jpg',
+      'https://uploads.codesandbox.io/uploads/user/0e04c500-acae-46eb-94c9-487a92ae8cfa/MVaw-accessory.jpg',
     ];
     return (
       <React.Fragment>

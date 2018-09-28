@@ -1,5 +1,9 @@
 import React from 'react';
 
+import './form.css';
+
+import { resolveAddress } from '../../lib/avatax.api.js';
+
 export default class Form extends React.Component {
 
   constructor(props) {
@@ -11,6 +15,8 @@ export default class Form extends React.Component {
       region: 'WA',
       country: 'US',
       postalCode: 98373,
+
+      _addressError: false,
     };
   }
 
@@ -18,24 +24,53 @@ export default class Form extends React.Component {
   //   console.log('__FORM_STATE__', this.state);
   // }
 
+  validateAddress = async (address) => {
+    
+    let isValidated = false;
+    
+    let res = await resolveAddress(address);
+
+    if (res.resolutionQuality === 'External' || res.resolutionQuality === 'NotCoded') {
+      this.setState({ _addressError: true });
+      isValidated = false;
+    } else {
+      isValidated = true;
+    }
+
+    return isValidated;
+  } 
+
   handleChange = e => {
+
+    if (this.state._addressError) { this.setState({_addressError: false}); }
+
     let name = e.target.name;
     let value = e.target.value || '';
     this.setState({[name]: value});
   }
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
+
     let address = Object.assign({}, this.state);
-    if (this.props.handler) { this.props.handler(address); }
-    if (this.props.toggle) { this.props.toggle(); }
+
+    // SANITIZE STATE TO FIT ADDRESS
+    delete address._addressError;
+    
+    let isVerified = await this.validateAddress(address);
+
+    if (isVerified) { 
+      if (this.props.handler) { this.props.handler(address); }
+      if (this.props.toggle) { this.props.toggle(); }
+    }
+
   }
 
   render() {
     return (
       <React.Fragment>
         <h3 className="form-title">Shipping Address:</h3>
-        <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+        <form className={this.state._addressError ? 'error' : null} onChange={this.handleChange} onSubmit={this.handleSubmit}>
           <label htmlFor="line1">Street
             <input type="text" name="line1" defaultValue={this.state.line1}/>
           </label>
