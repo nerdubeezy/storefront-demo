@@ -2,9 +2,6 @@ import React from 'react';
 import './products.css';
 
 export default class Products extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <React.Fragment>
@@ -15,7 +12,7 @@ export default class Products extends React.Component {
               <li key={product._id}>
                 <div className="single-product">
                   <h3>{product.name}</h3>
-                  <img className="product-image" src={product.image} />
+                  <img alt={product.name} className="product-image" src={product.image} />
                   <p className="product-description">{product.description}</p>
                   <footer>
                     <div className="price">Price: ${product.price}</div>

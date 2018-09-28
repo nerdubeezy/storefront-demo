@@ -21,9 +21,10 @@ export default class Modal extends React.Component {
     };
   }
 
-  componentDidUpdate() {
-    console.log('__MODAL_STUFF__', this.state.content);
-  }
+  // componentDidUpdate() {
+  //   console.log('__MODAL_STUFF__', this.state.content);
+  // }
+
   toggleForm = () => {
     this.state.showForm ? this.setState({showForm: false}) : this.setState({showForm: true});
   }
@@ -33,7 +34,7 @@ export default class Modal extends React.Component {
     let lines = this.props.content.map( (item, i) => {
       let product = {};
       product.number = i + 1;
-      product.quantity = parseInt(item.quantity);
+      product.quantity = parseInt(item.quantity, 10);
       product.amount = parseFloat(item.quantity * item.product.price);
       return product;
     });
@@ -138,7 +139,7 @@ export default class Modal extends React.Component {
         {
           Object.keys(this.state.content).length ? 
             <div className="ava-logo">
-              <img src={avaLogo}/>
+              <img alt="avatax logo" src={avaLogo}/>
             </div>
             : null
         }

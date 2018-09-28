@@ -5,16 +5,12 @@ import './cart.css';
 import * as utils from '../../lib/utils.js';
 
 export default class Cart extends React.Component {
-  
-  constructor(props) {
-    super(props);
-  }
 
   cartTotal = () => {
     let cart = this.props.cart;
     let total = 0;
     let quantity = 0;
-    cart.map(item => {
+    cart.forEach(item => {
       quantity += parseFloat(item.quantity);
       total += parseFloat(item.product.price) * item.quantity;
     });
@@ -41,7 +37,7 @@ export default class Cart extends React.Component {
               <li key={item.product._id}>
                 <div className="cart-thumb">
                   <div className="cart-item-name">{item.product.name}</div>
-                  <img src={item.product.image} />
+                  <img alt={item.product.name} src={item.product.image} />
                 </div>
                 <div className="cart-item-price">${item.product.price}</div>
                 <div className="times">
