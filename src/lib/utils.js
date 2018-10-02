@@ -1,4 +1,4 @@
-import superagent from "superagent";
+import superagent from 'superagent';
 
 export const renderIf = (test, trueComponent = null, falseComponent = null) =>
   test ? trueComponent : falseComponent;
@@ -25,14 +25,14 @@ export const getCache = key => {
     if (data) {
       resolve(JSON.parse(data));
     } else {
-      reject("Invalid cache key", key);
+      reject('Invalid cache key', key);
     }
   });
 };
 
 export const setCache = (key, value) => {
   return new Promise((resolve, reject) => {
-    let safeValue = typeof value === "string" ? value : JSON.stringify(value);
+    let safeValue = typeof value === 'string' ? value : JSON.stringify(value);
     localStorage.setItem(key, safeValue);
     resolve();
   });
