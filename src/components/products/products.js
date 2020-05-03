@@ -15,7 +15,7 @@ export default class Products extends React.Component {
                   <img alt={product.name} className="product-image" src={product.image} />
                   <p className="product-description">{product.description}</p>
                   <footer>
-                    <div className="price">Price: ${product.price}</div>
+                    <div className="price">Price: ksh {product.price}</div>
                     <button id={product._id} onClick={this.props.addtocart}>
                       Add to Cart
                     </button>
